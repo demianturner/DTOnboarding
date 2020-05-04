@@ -9,7 +9,7 @@
 import AppKit
 import DTPageControl
 
-class DTPageController: NSPageController, NSPageControllerDelegate {
+public class DTPageController: NSPageController, NSPageControllerDelegate {
     private var pageControl: DTPageControl!
     private let config: DTOnboardingConfig
     private let pages: [DTOnboardingViewController]
@@ -18,7 +18,7 @@ class DTPageController: NSPageController, NSPageControllerDelegate {
     // MARK: - Lifecyle -
     //
     
-    init(config: DTOnboardingConfig, pages: [DTOnboardingViewController]) {
+    public init(config: DTOnboardingConfig, pages: [DTOnboardingViewController]) {
         self.config = config
         self.pages = pages
         super.init(nibName: nil, bundle: nil)
@@ -36,13 +36,13 @@ class DTPageController: NSPageController, NSPageControllerDelegate {
         let v = NSView(frame: rect)
                 
         // add buttons
-        let back = makeButton(title: "back")
+        let back = makeButton()
         back.action = #selector(backAction)
         back.image = NSImage(named: NSImage.Name("NSGoLeftTemplate"))
         v.addSubview(back)
         back.translatesAutoresizingMaskIntoConstraints = false
         
-        let forward = makeButton(title: "forward")
+        let forward = makeButton()
         forward.action = #selector(forwardAction)
         forward.image = NSImage(named: NSImage.Name("NSGoRightTemplate"))
         v.addSubview(forward)
@@ -58,11 +58,11 @@ class DTPageController: NSPageController, NSPageControllerDelegate {
         return v
     }()
 
-    override func loadView() {
+    public override func loadView() {
        view = contentView
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         delegate = self
@@ -100,11 +100,11 @@ class DTPageController: NSPageController, NSPageControllerDelegate {
     //
     
     // move pages above page control
-    func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
+    public func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
         return NSMakeRect(0, 10, CGFloat(config.windowWidth), CGFloat(config.windowHeight))
     }
     
-    func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: String) -> NSViewController {
+    public func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: String) -> NSViewController {
         
         guard let id = Int(identifier), pages.indices.contains(id - 1) else {
             fatalError("Unexpected view controller identifier, \(identifier)")
@@ -112,11 +112,11 @@ class DTPageController: NSPageController, NSPageControllerDelegate {
         return pages[id - 1]
     }
     
-    func pageController(_ pageController: NSPageController, identifierFor object: Any) -> String {
+    public func pageController(_ pageController: NSPageController, identifierFor object: Any) -> String {
         return String(describing: object)
     }
     
-    func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
+    public func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
         pageControl.currentPage = selectedIndex
         completeTransition()
     }
@@ -131,9 +131,8 @@ class DTPageController: NSPageController, NSPageControllerDelegate {
 }
 
 extension DTPageController {
-    func makeButton(title: String) -> NSButton {
+    func makeButton() -> NSButton {
         let button = NSButton(frame: .zero)
-        button.title = title
         button.bezelStyle = .rounded
         button.target = self
         return button
