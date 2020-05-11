@@ -21,6 +21,38 @@ Install using Swift Package Manager.  Use master branch.
 ## Demo/Example
 See [example repo](https://github.com/demianturner/OnboardingExample-Mac).
 
+## Usage
+```swift
+let config = OnboardingConfig(
+    windowWidth: 350,
+    windowHeight: 430,
+    windowTitle: "my sample title",
+    pageCount: 3,
+    pageControlWidth: 200,
+    pageControlHeight: 20,
+    pageControlVerticalDistanceFromBottom: 20
+)
+
+let pages = [
+    DTOnboardingViewController(controllerId: "1"),
+    DTOnboardingViewController(controllerId: "2"),
+    DTOnboardingViewController(controllerId: "3")
+]
+
+let pageController = DTPageController(config: config, pages: pages)
+let frame = pageController.view.bounds
+let myWindow = NSWindow(
+    contentRect: .init(origin: .zero, size: frame.size),
+    styleMask: [.closable, .miniaturizable, .resizable, .titled],
+    backing: .buffered,
+    defer: false
+)
+myWindow.title = config.windowTitle
+myWindow.center()
+
+mainWindowController = NSWindowController(window: myWindow)
+mainWindowController?.contentViewController = pageController
+```
 
 ## License
 This software is Open Source under the MIT license, see LICENSE for details.
