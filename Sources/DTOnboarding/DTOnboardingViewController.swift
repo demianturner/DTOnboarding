@@ -11,7 +11,7 @@ import AppKit
 public class DTOnboardingViewController: NSViewController {
     private let controllerId: String
     
-    init(controllerId: String) {
+    public init(controllerId: String) {
         self.controllerId = controllerId
         super.init(nibName: nil, bundle: nil)
         
