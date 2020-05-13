@@ -2,6 +2,9 @@
 
 <a href="https://developer.apple.com/swift"><img alt="Swift5" src="https://img.shields.io/badge/language-Swift5-orange.svg"/></a>
 <a href="https://swift.org/package-manager"><img alt="Swift Package Manager" src="https://img.shields.io/badge/SwiftPM-compatible-yellowgreen.svg"/></a>
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/demianturner/dtonboarding?sort=semver)
+![GitHub](https://img.shields.io/github/license/demianturner/dtonboarding)
+![macOS](https://img.shields.io/badge/macOS-10.14-green.svg)
 
 A macOS onboarding component.
 
