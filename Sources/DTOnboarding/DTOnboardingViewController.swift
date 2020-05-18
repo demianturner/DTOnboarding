@@ -8,7 +8,7 @@
 
 import AppKit
 
-public class DTOnboardingViewController: NSViewController {
+open class DTOnboardingViewController: NSViewController {
     private let controllerId: String
     
     public init(controllerId: String) {
@@ -18,7 +18,7 @@ public class DTOnboardingViewController: NSViewController {
         self.identifier = NSUserInterfaceItemIdentifier(rawValue: controllerId)
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -34,11 +34,11 @@ public class DTOnboardingViewController: NSViewController {
         iv.image = image
         v.addSubview(iv)
         setupAutoLayoutConstraining(child: iv, to: v)
-        iv.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
     private func setupAutoLayoutConstraining(child: NSView, to parent: NSView) {
+        child.translatesAutoresizingMaskIntoConstraints = false
         child.leftAnchor.constraint(equalTo: parent.leftAnchor).isActive = true
         child.rightAnchor.constraint(equalTo: parent.rightAnchor).isActive = true
         child.topAnchor.constraint(equalTo: parent.topAnchor).isActive = true

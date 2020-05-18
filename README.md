@@ -4,15 +4,16 @@
 <a href="https://swift.org/package-manager"><img alt="Swift Package Manager" src="https://img.shields.io/badge/SwiftPM-compatible-yellowgreen.svg"/></a>
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/demianturner/dtonboarding?sort=semver)
 ![GitHub](https://img.shields.io/github/license/demianturner/dtonboarding)
-![macOS](https://img.shields.io/badge/macOS-10.14-green.svg)
+![macOS](https://img.shields.io/badge/macOS-10.12-green.svg)
 
 A macOS onboarding component.
 
 - creates a window containing a configurable number of screens
 - use buttons or gestures to navigate
-- component size, layout and content easily configurable
+- component size, layout and content easily are configurable
 
-![](https://i.imgur.com/PEZCQ6F.png)
+![](https://i.imgur.com/sJb69GE.gif)
+
 
 ## Installation
 Install using Swift Package Manager.  Use master branch.
@@ -21,13 +22,18 @@ Install using Swift Package Manager.  Use master branch.
 - [https://github.com/demianturner/DTPageControl](https://github.com/demianturner/DTPageControl)
 
 ## Requirements
-- OS X 10.14+
+- OS X 10.12+
 - Xcode 11.0 or above
 
 ## Demo/Example
-See [example repo](https://github.com/demianturner/OnboardingExample-Mac).
+Either compile and run the demo from the [example repo](https://github.com/demianturner/OnboardingExample-Mac) or see it used in [Crypto Tools](https://apps.apple.com/gb/app/crypto-tools/id1345035239?mt=12).
 
 ## Usage
+
+For this example, ensure 3 pngs exist in the project's asset catalog, in this case `1.png, 2.png, 3.png`
+
+Use the following code in your `AppDelegate.swift` or similar.
+
 ```swift
 let config = OnboardingConfig(
     windowWidth: 350,

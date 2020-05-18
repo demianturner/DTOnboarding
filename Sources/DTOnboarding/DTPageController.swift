@@ -72,7 +72,7 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
             .map { $0 }
             .map { $0 + 1 }
             .map { String($0) }
-        transitionStyle = .stackBook
+        transitionStyle = config.pageTransitionStyle
         
         setupPageControl()
     }
@@ -135,6 +135,8 @@ extension DTPageController {
         let button = NSButton(frame: .zero)
         button.bezelStyle = .rounded
         button.target = self
+        button.isTransparent = true
+        button.focusRingType = .none
         return button
     }
 }
