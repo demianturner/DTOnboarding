@@ -30,40 +30,48 @@ Either compile and run the demo from the [example repo](https://github.com/demia
 
 ## Usage
 
-For this example, ensure 3 pngs exist in the project's asset catalog, in this case `1.png, 2.png, 3.png`
+For this example, ensure 3 pngs exist (provided in the [example repo](https://github.com/demianturner/OnboardingExample-Mac)) in the project's asset catalog, in this case `1.png, 2.png, 3.png`
 
 Use the following code in your `AppDelegate.swift` or similar.
 
 ```swift
-let config = OnboardingConfig(
-    windowWidth: 350,
-    windowHeight: 430,
-    windowTitle: "my sample title",
-    pageCount: 3,
-    pageControlWidth: 200,
-    pageControlHeight: 20,
-    pageControlVerticalDistanceFromBottom: 20
-)
+class AppDelegate: NSObject, NSApplicationDelegate {
+    private var onboardingWindowController: NSWindowController?
 
-let pages = [
-    DTOnboardingViewController(controllerId: "1"),
-    DTOnboardingViewController(controllerId: "2"),
-    DTOnboardingViewController(controllerId: "3")
-]
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let config = OnboardingConfig(
+            windowWidth: 350,
+            windowHeight: 430,
+            windowTitle: "my sample title",
+            pageCount: 3,
+            pageControlWidth: 200,
+            pageControlHeight: 20,
+            pageControlVerticalDistanceFromBottom: 20, 
+            pageTransitionStyle: .stackBook
+        )
 
-let pageController = DTPageController(config: config, pages: pages)
-let frame = pageController.view.bounds
-let myWindow = NSWindow(
-    contentRect: .init(origin: .zero, size: frame.size),
-    styleMask: [.closable, .miniaturizable, .resizable, .titled],
-    backing: .buffered,
-    defer: false
-)
-myWindow.title = config.windowTitle
-myWindow.center()
+        let pages = [
+            DTOnboardingViewController(controllerId: "1"),
+            DTOnboardingViewController(controllerId: "2"),
+            DTOnboardingViewController(controllerId: "3")
+        ]
 
-mainWindowController = NSWindowController(window: myWindow)
-mainWindowController?.contentViewController = pageController
+        let pageController = DTPageController(config: config, pages: pages)
+        let frame = pageController.view.bounds
+        let myWindow = NSWindow(
+            contentRect: .init(origin: .zero, size: frame.size),
+            styleMask: [.closable, .miniaturizable, .resizable, .titled],
+            backing: .buffered,
+            defer: false
+        )
+        myWindow.title = config.windowTitle
+        myWindow.center()
+
+        onboardingWindowController = NSWindowController(window: myWindow)
+        onboardingWindowController?.contentViewController = pageController
+        onboardingWindowController?.showWindow(self)
+    }
+}
 ```
 
 ## License
