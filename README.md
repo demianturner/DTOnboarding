@@ -26,11 +26,9 @@ Install using Swift Package Manager.  Use master branch.
 - Xcode 11.0 or above
 
 ## Demo/Example
-Either compile and run the demo from the [example repo](https://github.com/demianturner/OnboardingExample-Mac) or see it used in [Crypto Tools](https://apps.apple.com/gb/app/crypto-tools/id1345035239?mt=12).
+Either compile and run the example in the Demo folder or see the component used in [Crypto Tools](https://apps.apple.com/gb/app/crypto-tools/id1345035239?mt=12).
 
 ## Usage
-
-For this example, ensure 3 pngs exist (provided in the [example repo](https://github.com/demianturner/OnboardingExample-Mac)) in the project's asset catalog, in this case `1.png, 2.png, 3.png`
 
 Use the following code in your `AppDelegate.swift` or similar.
 
