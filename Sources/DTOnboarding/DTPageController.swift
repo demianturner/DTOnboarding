@@ -38,12 +38,14 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
         // add buttons
         let back = makeButton()
         back.action = #selector(backAction)
+        back.target = self
         back.image = NSImage(named: NSImage.Name("NSGoLeftTemplate"))
         v.addSubview(back)
         back.translatesAutoresizingMaskIntoConstraints = false
         
         let forward = makeButton()
         forward.action = #selector(forwardAction)
+        forward.target = self 
         forward.image = NSImage(named: NSImage.Name("NSGoRightTemplate"))
         v.addSubview(forward)
         forward.translatesAutoresizingMaskIntoConstraints = false
