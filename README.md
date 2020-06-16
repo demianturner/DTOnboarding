@@ -22,7 +22,7 @@ Install using Swift Package Manager.  Use master branch.
 - [https://github.com/demianturner/DTPageControl](https://github.com/demianturner/DTPageControl)
 
 ## Requirements
-- OS X 10.12+
+- OS X 10.14+
 - Xcode 11.0 or above
 
 ## Demo/Example

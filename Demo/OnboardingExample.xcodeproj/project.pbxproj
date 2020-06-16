@@ -22,7 +22,6 @@
 		E102CDCB245C48A100691A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E102CDCD245C48A100691A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E102CDCE245C48A100691A1E /* OnboardingExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnboardingExample.entitlements; sourceTree = "<group>"; };
-		E167FEA8249921D600E0F8FF /* DTOnboarding */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DTOnboarding; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +39,6 @@
 		E102CDB8245C48A000691A1E = {
 			isa = PBXGroup;
 			children = (
-				E167FEA8249921D600E0F8FF /* DTOnboarding */,
 				E102CDC3245C48A000691A1E /* OnboardingExample */,
 				E102CDC2245C48A000691A1E /* Products */,
 			);
