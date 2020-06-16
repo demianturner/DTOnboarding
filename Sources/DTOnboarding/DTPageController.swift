@@ -9,8 +9,9 @@
 import AppKit
 import DTPageControl
 
-public class DTPageController: NSPageController, NSPageControllerDelegate {
+public class DTPageController: NSViewController {
     private var pageControl: DTPageControl!
+    private var pageController: NSPageController!
     private let config: DTOnboardingConfig
     private let pages: [DTOnboardingViewController]
     
@@ -22,6 +23,17 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
         self.config = config
         self.pages = pages
         super.init(nibName: nil, bundle: nil)
+        setUp()
+    }
+    
+    private func setUp() {
+        let pageController = NSPageController()
+        pageController.view = NSView()
+        pageController.view.translatesAutoresizingMaskIntoConstraints = false
+        pageController.delegate = self
+
+        addChild(pageController)
+        self.pageController = pageController
     }
 
     required init?(coder: NSCoder) {
@@ -37,15 +49,15 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
                 
         // add buttons
         let back = makeButton()
-        back.action = #selector(DTPageController.backAction)
-        back.target = self
+        back.target = pageController
+        back.action = #selector(pageController.navigateBack(_:))
         back.image = NSImage(named: NSImage.Name("NSGoLeftTemplate"))
         v.addSubview(back)
         back.translatesAutoresizingMaskIntoConstraints = false
         
         let forward = makeButton()
-        forward.action = #selector(DTPageController.forwardAction)
-        forward.target = self 
+        forward.target = pageController
+        forward.action = #selector(pageController.navigateForward(_:))
         forward.image = NSImage(named: NSImage.Name("NSGoRightTemplate"))
         v.addSubview(forward)
         forward.translatesAutoresizingMaskIntoConstraints = false
@@ -67,14 +79,18 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        delegate = self
+        let subview = NSView(frame: view.bounds)
+        view.addSubview(subview)
+        setupAutoLayoutConstraining(child: subview, to: view)
+        
+        pageController.view = subview
         
         // page identifiers
-        arrangedObjects = pages.indices
+        pageController.arrangedObjects = pages.indices
             .map { $0 }
             .map { $0 + 1 }
             .map { String($0) }
-        transitionStyle = config.pageTransitionStyle
+        pageController.transitionStyle = config.pageTransitionStyle
         
         setupPageControl()
     }
@@ -96,11 +112,13 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
         pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -CGFloat(config.pageControlVerticalDistanceFromBottom)).isActive = true
     }
-    
-    //
-    // MARK: - NSPageControllerDelegate -
-    //
-    
+}
+
+//
+// MARK: - NSPageControllerDelegate -
+//
+
+extension DTPageController: NSPageControllerDelegate {
     // move pages above page control
     public func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
         return NSMakeRect(0, 10, CGFloat(config.windowWidth), CGFloat(config.windowHeight))
@@ -119,27 +137,8 @@ public class DTPageController: NSPageController, NSPageControllerDelegate {
     }
     
     public func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
-        pageControl.currentPage = selectedIndex
-        completeTransition()
-    }
-    
-    @objc func backAction() {
-        navigateBack(self)
-    }
-    
-    @objc func forwardAction() {
-        navigateForward(self)
-    }
-}
-
-extension DTPageController {
-    func makeButton() -> NSButton {
-        let button = NSButton(frame: .zero)
-        button.bezelStyle = .rounded
-        button.target = self
-        button.isTransparent = true
-        button.focusRingType = .none
-        return button
+        pageControl.currentPage = pageController.selectedIndex
+        pageController.completeTransition()
     }
 }
 
