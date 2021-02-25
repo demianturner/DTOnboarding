@@ -27,12 +27,12 @@ class ViewController: NSViewController {
         )
         
         let pages = [
-            DTOnboardingViewController(controllerId: "1"),
-            DTOnboardingViewController(controllerId: "2"),
-            DTOnboardingViewController(controllerId: "3")
+            DTPageController(controllerId: "1"),
+            DTPageController(controllerId: "2"),
+            DTPageController(controllerId: "3")
         ]
 
-        let pageController = DTPageController(config: config, pages: pages)
+        let pageController = DTOnboardingController(config: config, pages: pages)
         let frame = pageController.view.bounds
         let myWindow = NSWindow(
             contentRect: .init(origin: .zero, size: frame.size),
