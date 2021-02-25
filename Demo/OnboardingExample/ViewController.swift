@@ -32,8 +32,8 @@ class ViewController: NSViewController {
             DTPageController(controllerId: "3")
         ]
 
-        let pageController = DTOnboardingController(config: config, pages: pages)
-        let frame = pageController.view.bounds
+        let onboardingController = DTOnboardingController(config: config, pages: pages)
+        let frame = onboardingController.view.bounds
         let myWindow = NSWindow(
             contentRect: .init(origin: .zero, size: frame.size),
             styleMask: [.closable, .miniaturizable, .resizable, .titled],
@@ -44,7 +44,7 @@ class ViewController: NSViewController {
         myWindow.center()
         
         mainWindowController = NSWindowController(window: myWindow)
-        mainWindowController?.contentViewController = pageController
+        mainWindowController?.contentViewController = onboardingController
     }
 
     @IBAction func launch(_ sender: Any) {

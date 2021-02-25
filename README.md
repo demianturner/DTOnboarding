@@ -49,13 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
 
         let pages = [
-            DTOnboardingViewController(controllerId: "1"),
-            DTOnboardingViewController(controllerId: "2"),
-            DTOnboardingViewController(controllerId: "3")
+            DTPageController(controllerId: "1"),
+            DTPageController(controllerId: "2"),
+            DTPageController(controllerId: "3")
         ]
 
-        let pageController = DTPageController(config: config, pages: pages)
-        let frame = pageController.view.bounds
+        let onboardingController = DTOnboardingController(config: config, pages: pages)
+        let frame = onboardingController.view.bounds
         let myWindow = NSWindow(
             contentRect: .init(origin: .zero, size: frame.size),
             styleMask: [.closable, .miniaturizable, .resizable, .titled],
@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myWindow.center()
 
         onboardingWindowController = NSWindowController(window: myWindow)
-        onboardingWindowController?.contentViewController = pageController
+        onboardingWindowController?.contentViewController = onboardingController
         onboardingWindowController?.showWindow(self)
     }
 }
