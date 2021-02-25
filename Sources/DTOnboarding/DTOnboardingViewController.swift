@@ -3,7 +3,7 @@
 //  OnboardingExample
 //
 //  Created by Demian Turner on 04/05/2020.
-//  Copyright © 2020 Demian Turner. All rights reserved.
+//  Copyright © 2021 Demian Turner. All rights reserved.
 //
 
 import AppKit
@@ -27,13 +27,15 @@ open class DTOnboardingViewController: NSViewController {
     }
     
     private lazy var contentView: NSView = {
-        let v = NSView(frame: .zero)
+        let v = DTOnboardingViewControllerView(frame: .zero)
         
         let image = NSImage(named: controllerId)!
-        let iv = NSImageView(frame: NSRect(origin: .zero, size: image.size))
+        let iv = NSImageView(frame: .zero)
         iv.image = image
         v.addSubview(iv)
-        setupAutoLayoutConstraining(child: iv, to: v)
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+        iv.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
         return v
     }()
 }

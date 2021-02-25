@@ -3,11 +3,16 @@
 //  OnboardingExample
 //
 //  Created by Demian Turner on 01/05/2020.
-//  Copyright © 2020 Demian Turner. All rights reserved.
+//  Copyright © 2021 Demian Turner. All rights reserved.
 //
 
 import AppKit
 import DTPageControl
+
+class DTOnboardingViewControllerView: NSView {}
+class DTPageControllerSubView: NSView {}
+class DTPageControllerView: NSView {}
+class NSPageControllerView: NSView {}
 
 public class DTPageController: NSViewController {
     private var pageControl: DTPageControl!
@@ -28,8 +33,6 @@ public class DTPageController: NSViewController {
     
     private func setUp() {
         let pageController = NSPageController()
-        pageController.view = NSView()
-        pageController.view.translatesAutoresizingMaskIntoConstraints = false
         pageController.delegate = self
 
         addChild(pageController)
@@ -45,27 +48,29 @@ public class DTPageController: NSViewController {
             origin: .zero,
             size: NSSize(width: self.config.windowWidth, height: self.config.windowHeight)
         )
-        let v = NSView(frame: rect)
+        let v = DTPageControllerView(frame: rect)
                 
-        // add buttons
+        // back button
         let back = makeButton()
         back.target = pageController
         back.action = #selector(pageController.navigateBack(_:))
         back.image = NSImage(named: NSImage.Name("NSGoLeftTemplate"))
         v.addSubview(back)
-        back.translatesAutoresizingMaskIntoConstraints = false
         
+        // layout
+        back.translatesAutoresizingMaskIntoConstraints = false
+        back.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
+        back.leftAnchor.constraint(equalTo: v.leftAnchor, constant: 10).isActive = true
+        
+        // forward button
         let forward = makeButton()
         forward.target = pageController
         forward.action = #selector(pageController.navigateForward(_:))
         forward.image = NSImage(named: NSImage.Name("NSGoRightTemplate"))
         v.addSubview(forward)
-        forward.translatesAutoresizingMaskIntoConstraints = false
         
         // layout
-        back.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
-        back.leftAnchor.constraint(equalTo: v.leftAnchor, constant: 10).isActive = true
-        
+        forward.translatesAutoresizingMaskIntoConstraints = false
         forward.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
         forward.rightAnchor.constraint(equalTo: v.rightAnchor, constant: -10).isActive = true
 
@@ -79,7 +84,7 @@ public class DTPageController: NSViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        let subview = NSView(frame: view.bounds)
+        let subview = NSPageControllerView(frame: .zero)
         view.addSubview(subview)
         setupAutoLayoutConstraining(child: subview, to: view)
         
