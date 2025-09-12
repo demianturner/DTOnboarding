@@ -29,7 +29,16 @@ public struct OnboardingConfig: DTOnboardingConfig {
     public let pageControlVerticalDistanceFromBottom: Int
     public let pageTransitionStyle: NSPageController.TransitionStyle
     
-    public init(windowWidth: Int, windowHeight: Int, windowTitle: String, pageCount: Int, pageControlWidth: Int, pageControlHeight: Int, pageControlVerticalDistanceFromBottom: Int, pageTransitionStyle: NSPageController.TransitionStyle) {
+    public init(
+        windowWidth: Int,
+        windowHeight: Int,
+        windowTitle: String,
+        pageCount: Int,
+        pageControlWidth: Int,
+        pageControlHeight: Int,
+        pageControlVerticalDistanceFromBottom: Int,
+        pageTransitionStyle: NSPageController.TransitionStyle
+    ) {
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
         self.windowTitle = windowTitle
