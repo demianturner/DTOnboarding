@@ -122,11 +122,12 @@ public class DTOnboardingController: NSViewController {
         let width = CGFloat(config.pageControlWidth)
         let height = CGFloat(config.pageControlHeight)
         let verticalDistanceFromBottom =  CGFloat(config.windowHeight - config.pageControlVerticalDistanceFromBottom)/2.0
+        let widthAdjustment = CGFloat(config.windowWidth) / 2.0 - width / 2.0
         
         NSLayoutConstraint.activate([
             pageControl.widthAnchor.constraint(equalToConstant: width),
             pageControl.heightAnchor.constraint(equalToConstant: height),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -80),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -widthAdjustment),
             pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: verticalDistanceFromBottom)
         ])
     }
@@ -139,7 +140,7 @@ public class DTOnboardingController: NSViewController {
 extension DTOnboardingController: NSPageControllerDelegate {
     // move pages above page control
     public func pageController(_ pageController: NSPageController, frameFor object: Any?) -> NSRect {
-        return NSMakeRect(0, 10, CGFloat(config.windowWidth), CGFloat(config.windowHeight))
+        NSMakeRect(0, 10, CGFloat(config.windowWidth), CGFloat(config.windowHeight))
     }
     
     public func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: String) -> NSViewController {
@@ -151,7 +152,7 @@ extension DTOnboardingController: NSPageControllerDelegate {
     }
     
     public func pageController(_ pageController: NSPageController, identifierFor object: Any) -> String {
-        return String(describing: object)
+        String(describing: object)
     }
     
     public func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
