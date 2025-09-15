@@ -87,7 +87,6 @@ public class DTOnboardingController: NSViewController {
         
         let pageView = NSPageView(frame: .zero)
         view.addSubview(pageView)
-        setupAutoLayoutConstraining(child: pageView, to: view)
         
         pageController.view = pageView
         
@@ -110,13 +109,26 @@ public class DTOnboardingController: NSViewController {
         pageControl.numberOfPages = config.pageCount
 
         view.addSubview(pageControl)
+    }
+    
+    public override func viewDidLayout() {
+        super.viewDidLayout()
         
-        // layout
+        positionWithAutoLayout()
+    }
+    
+    private func positionWithAutoLayout() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.widthAnchor.constraint(equalToConstant: CGFloat(config.pageControlWidth)).isActive = true
-        pageControl.heightAnchor.constraint(equalToConstant: CGFloat(config.pageControlHeight)).isActive = true
-        pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -CGFloat(config.pageControlVerticalDistanceFromBottom)).isActive = true
+        let width = CGFloat(config.pageControlWidth)
+        let height = CGFloat(config.pageControlHeight)
+        let verticalDistanceFromBottom =  CGFloat(config.windowHeight - config.pageControlVerticalDistanceFromBottom)/2.0
+        
+        NSLayoutConstraint.activate([
+            pageControl.widthAnchor.constraint(equalToConstant: width),
+            pageControl.heightAnchor.constraint(equalToConstant: height),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -80),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: verticalDistanceFromBottom)
+        ])
     }
 }
 

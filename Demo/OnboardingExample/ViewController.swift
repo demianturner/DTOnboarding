@@ -33,9 +33,11 @@ class ViewController: NSViewController {
         ]
 
         let onboardingController = DTOnboardingController(config: config, pages: pages)
-        let frame = onboardingController.view.bounds
+        // Force view loading to ensure proper bounds
+        _ = onboardingController.view
+        let frame = NSRect(origin: .zero, size: NSSize(width: config.windowWidth, height: config.windowHeight))
         let myWindow = NSWindow(
-            contentRect: .init(origin: .zero, size: frame.size),
+            contentRect: frame,
             styleMask: [.closable, .miniaturizable, .resizable, .titled],
             backing: .buffered,
             defer: false
