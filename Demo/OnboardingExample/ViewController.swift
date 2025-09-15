@@ -19,7 +19,7 @@ class ViewController: NSViewController {
             windowWidth: 350,
             windowHeight: 430,
             windowTitle: "my sample title",
-            pageCount: 3,
+            pageCount: 4,
             pageControlWidth: 200,
             pageControlHeight: 20,
             pageControlVerticalDistanceFromBottom: 20,
@@ -29,7 +29,8 @@ class ViewController: NSViewController {
         let pages = [
             DTPageController(controllerId: "1"),
             DTPageController(controllerId: "2"),
-            DTPageController(controllerId: "3")
+            DTPageController(controllerId: "3"),
+            LastStepController(controllerId: "4")
         ]
 
         let onboardingController = DTOnboardingController(config: config, pages: pages)

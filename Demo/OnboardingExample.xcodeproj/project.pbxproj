@@ -12,6 +12,7 @@
 		E102CDC9245C48A100691A1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E102CDC8245C48A100691A1E /* Assets.xcassets */; };
 		E102CDCC245C48A100691A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E102CDCA245C48A100691A1E /* Main.storyboard */; };
 		E113BF6B2E747F22008DA4C3 /* DTOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E113BF6A2E747F22008DA4C3 /* DTOnboarding */; };
+		E11662D62E787DAD0027CCC5 /* LastStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11662D52E787DAD0027CCC5 /* LastStepController.swift */; };
 		E1A1C71A2E783D9B0049E160 /* DTOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E1A1C7192E783D9B0049E160 /* DTOnboarding */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		E102CDCB245C48A100691A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E102CDCD245C48A100691A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E102CDCE245C48A100691A1E /* OnboardingExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnboardingExample.entitlements; sourceTree = "<group>"; };
+		E11662D52E787DAD0027CCC5 /* LastStepController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastStepController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		E102CDC3245C48A000691A1E /* OnboardingExample */ = {
 			isa = PBXGroup;
 			children = (
+				E11662D52E787DAD0027CCC5 /* LastStepController.swift */,
 				E102CDC4245C48A000691A1E /* AppDelegate.swift */,
 				E102CDC6245C48A000691A1E /* ViewController.swift */,
 				E102CDC8245C48A100691A1E /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E102CDC7245C48A000691A1E /* ViewController.swift in Sources */,
+				E11662D62E787DAD0027CCC5 /* LastStepController.swift in Sources */,
 				E102CDC5245C48A000691A1E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

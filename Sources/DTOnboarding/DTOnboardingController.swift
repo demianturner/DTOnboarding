@@ -31,6 +31,10 @@ public class DTOnboardingController: NSViewController {
         setUp()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     /// `NSPageController` must be a child VC for paging to work correctly
     private func setUp() {
         let pageController = NSPageController()
@@ -40,14 +44,11 @@ public class DTOnboardingController: NSViewController {
         self.pageController = pageController
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     private lazy var contentView: NSView = {
         let rect = NSRect(
             origin: .zero,
-            size: NSSize(width: self.config.windowWidth, height: self.config.windowHeight)
+            size: NSSize(width: config.windowWidth, height: config.windowHeight)
         )
         let v = DTOnboardingView(frame: rect)
                 
@@ -87,6 +88,7 @@ public class DTOnboardingController: NSViewController {
         
         let pageView = NSPageView(frame: .zero)
         view.addSubview(pageView)
+        setupAutoLayoutConstraining(child: pageView, to: view)
         
         pageController.view = pageView
         
@@ -100,6 +102,12 @@ public class DTOnboardingController: NSViewController {
         setupPageControl()
     }
     
+    public override func viewDidLayout() {
+        super.viewDidLayout()
+        
+        setupAutoLayout()
+    }
+    
     //
     // MARK: - DTPageControl -
     //
@@ -111,13 +119,7 @@ public class DTOnboardingController: NSViewController {
         view.addSubview(pageControl)
     }
     
-    public override func viewDidLayout() {
-        super.viewDidLayout()
-        
-        positionWithAutoLayout()
-    }
-    
-    private func positionWithAutoLayout() {
+    private func setupAutoLayout() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         let width = CGFloat(config.pageControlWidth)
         let height = CGFloat(config.pageControlHeight)
