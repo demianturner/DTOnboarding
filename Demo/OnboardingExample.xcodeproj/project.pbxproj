@@ -3,15 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1018BA42460AD5B009D13AC /* DTOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E1018BA32460AD5B009D13AC /* DTOnboarding */; };
 		E102CDC5245C48A000691A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102CDC4245C48A000691A1E /* AppDelegate.swift */; };
 		E102CDC7245C48A000691A1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102CDC6245C48A000691A1E /* ViewController.swift */; };
 		E102CDC9245C48A100691A1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E102CDC8245C48A100691A1E /* Assets.xcassets */; };
 		E102CDCC245C48A100691A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E102CDCA245C48A100691A1E /* Main.storyboard */; };
+		E113BF6B2E747F22008DA4C3 /* DTOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E113BF6A2E747F22008DA4C3 /* DTOnboarding */; };
+		E1A1C71A2E783D9B0049E160 /* DTOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = E1A1C7192E783D9B0049E160 /* DTOnboarding */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +30,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1018BA42460AD5B009D13AC /* DTOnboarding in Frameworks */,
+				E113BF6B2E747F22008DA4C3 /* DTOnboarding in Frameworks */,
+				E1A1C71A2E783D9B0049E160 /* DTOnboarding in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +84,8 @@
 			);
 			name = OnboardingExample;
 			packageProductDependencies = (
-				E1018BA32460AD5B009D13AC /* DTOnboarding */,
+				E113BF6A2E747F22008DA4C3 /* DTOnboarding */,
+				E1A1C7192E783D9B0049E160 /* DTOnboarding */,
 			);
 			productName = OnboardingExample;
 			productReference = E102CDC1245C48A000691A1E /* OnboardingExample.app */;
@@ -113,7 +116,7 @@
 			);
 			mainGroup = E102CDB8245C48A000691A1E;
 			packageReferences = (
-				E1018BA22460AD5B009D13AC /* XCRemoteSwiftPackageReference "DTOnboarding" */,
+				E1A1C7182E783D9B0049E160 /* XCLocalSwiftPackageReference "../../DTOnboarding" */,
 			);
 			productRefGroup = E102CDC2245C48A000691A1E /* Products */;
 			projectDirPath = "";
@@ -342,21 +345,20 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		E1018BA22460AD5B009D13AC /* XCRemoteSwiftPackageReference "DTOnboarding" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/demianturner/DTOnboarding";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		E1A1C7182E783D9B0049E160 /* XCLocalSwiftPackageReference "../../DTOnboarding" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../DTOnboarding;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E1018BA32460AD5B009D13AC /* DTOnboarding */ = {
+		E113BF6A2E747F22008DA4C3 /* DTOnboarding */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E1018BA22460AD5B009D13AC /* XCRemoteSwiftPackageReference "DTOnboarding" */;
+			productName = DTOnboarding;
+		};
+		E1A1C7192E783D9B0049E160 /* DTOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = DTOnboarding;
 		};
 /* End XCSwiftPackageProductDependency section */
