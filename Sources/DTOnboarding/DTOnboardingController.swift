@@ -87,7 +87,8 @@ public class DTOnboardingController: NSViewController {
         super.viewDidLoad()
         
         let pageView = NSPageView(frame: .zero)
-        view.addSubview(pageView)
+        // Insert pageView at index 0 so it's behind the navigation buttons
+        view.addSubview(pageView, positioned: .below, relativeTo: nil)
         setupAutoLayoutConstraining(child: pageView, to: view)
         
         pageController.view = pageView
